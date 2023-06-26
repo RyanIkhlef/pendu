@@ -1,7 +1,7 @@
 # Jeu du pendu en python, étape par étape.
 
 
-## 1. Choisir un mot :
+### 1. Choisir un mot :
 
 Il faut pouvoir choisir un mot avant de démarrer le jeu, pour se faire, on peut prendre un mot "aléatoire" provennant du dictionnaire ou bien demander à un second utilisateur de choisir le mot.
 
@@ -10,9 +10,9 @@ On peut alors voir une liste comme ceci : `{0: "mot1", 1: "mot2"}`, ainsi, si on
 On peut alors aisaiment demandé un numéro aléatoire avec les fonctions du module `Random`. Il suffit alors uniquement de connaître la taille de la liste récupérable avec la fonction `len(maListe)`. Pour demander un nombre aléatoire entre 0 et `len(maListe)`.
 
 
-## 2. Savoir si une lettre fait partie du mot : 
+### 2. Savoir si une lettre fait partie du mot : 
 
-Une fois le mot stocké en mémoire (dans une variable `motCourrant = mots[indiceAléatoire]`) il faut pouvoir faire 2 choses : 
+Une fois le mot stocké en mémoire (dans une variable `mot_courrant = mots[indiceAléatoire]`) il faut pouvoir faire 2 choses : 
 1. Demander à l'utilisateur d'entrer un caractère.
 2. Vérifier que ce caractère soit présent dans le mot.
 
@@ -32,21 +32,21 @@ Dans quels cas le jeu est-il terminé ? On retrouve encore une fois deux cas :
 <!-- -->
 
 1. Dans l'étape 2. nous étions capable de récupérer de la part du joueur les caractères qu'il propose. On stockait alors ces caractères dans une structure de données. Il faut alors être câpable de déterminer quand un mot est trouvé. Pour se faire, il existe plusieurs méthodes, voici quelques exemples : 
-    1. On peut ranger le mot initial (`motCourrant`) dans l'ordre alphabétique, et retirer les doublons. Ainsi, lorsqu'on veut vérifier que l'ensemble des lettre données par le joueur correspond à la combinaison, on a juste à ranger dans ce même ordre notre liste et les comparer.
-    2. On peut maintenir un ensemble de lettres. Un ensemble est une structure de données qui ressemble aux listes à l'exception que dans un ensemble, on ne peut trouver qu'une seule et unique fois la même occurrence. Si par exemple, on a le mot, `motCourrant="bonjour"`, on aurait l'ensemble : `{"b", "o", "n", "j", "u", "r"}`, On remarque alors que le "o" n'apparaît qu'une seule fois. Ensuite, il suffira alors, pour chaque proposition du joueur, de vérifier que la lettre apparaît dans le mot. Si oui, on ajoute la lettre dans un autre ensemble, si non, on retire une tentative. Si par exemple, l'utilateur entre dans cet ordre les lettres : "a", "b", "j" on aura un second ensemble qui ressemblera à `{"b", "j"}.
+    1. On peut ranger le mot initial (`mot_courrant`) dans l'ordre alphabétique, et retirer les doublons. Ainsi, lorsqu'on veut vérifier que l'ensemble des lettre données par le joueur correspond à la combinaison, on a juste à ranger dans ce même ordre notre liste et les comparer.
+    2. On peut maintenir un ensemble de lettres. Un ensemble est une structure de données qui ressemble aux listes à l'exception que dans un ensemble, on ne peut trouver qu'une seule et unique fois la même occurrence. Si par exemple, on a le mot, `mot_courrant="bonjour"`, on aurait l'ensemble : `{"b", "o", "n", "j", "u", "r"}`, On remarque alors que le "o" n'apparaît qu'une seule fois. Ensuite, il suffira alors, pour chaque proposition du joueur, de vérifier que la lettre apparaît dans le mot. Si oui, on ajoute la lettre dans un autre ensemble, si non, on retire une tentative. Si par exemple, l'utilateur entre dans cet ordre les lettres : "a", "b", "j" on aura un second ensemble qui ressemblera à `{"b", "j"}.
 
 
 2. Enfin, nous devons stopper le jeu dans le cas où l'utilisateur s'est trompé trop de fois. Nous avions déjà compté le nombre de fois où le joueur s'est trompé. Avec cette information, nous sommes capâble de demander à la boucle de s'arrêter lorsque nous dépassons un nombre de tentative fixé arbitrairement.
 
 Une fois ces deux conditions réunis, il suffit alors de faire notre boucle `while`, on doit alors lire "Tant que *le mot n'est pas trouvé* **OU** *le nombre de tentative n'est pas dépassé*, alors, on continue de demander une lettre à l'utilisateur.
 
-# 4. Pour aller plus loin :
+### 4. Pour aller plus loin :
 
 Si toutes les étapes du dessus ont été réalisé, nous devrions avoir un jeu du pendu fonctionnel, puisque, nous sommes câpable de choisir un mot, lire l'entrée du joueur, vérifier que sa lettre est présente dans le mot. Si elle ne l'est pas, on est câpable de lui compter une erreur. On est également en capacité de detecter la fin de jeu, que ce soit une fin gagnante ou une fin perdante. Cependant, notre jeu manque un peu d'affichage. Je propose donc d'ajouter des informations à l'utilisateur.
 Normalement, dans le jeu du pendu, on peut voir la première (et parfois la dernière lettre) ainsi que le nombre de lettre manquante. Je propose donc de refaire cet affichage.
 
 Pour se faire, lorsque le mot est choisit, nous allons récupérer trois informations, la première, la dernière lettre du mot ainsi que sa taille.   
-Pour récupérer la première et dernière lettre du mot, il faut voir les chaînes de caractères comme des listes de caractères. Ainsi, lorsque l'on sait cela, on se rend compte qu'on peut accéder à n'importe quel caractère de la même manière qu'on accéderai à un élément d'une liste. Avec les crochets `[]`. Par exemple, pour récupérer la première lettre du mot courrant, on peut faire : `motCourrant[0]`. Je te laisse voir comment récupérer la dernière lettre ainsi que la taille ;).  
+Pour récupérer la première et dernière lettre du mot, il faut voir les chaînes de caractères comme des listes de caractères. Ainsi, lorsque l'on sait cela, on se rend compte qu'on peut accéder à n'importe quel caractère de la même manière qu'on accéderai à un élément d'une liste. Avec les crochets `[]`. Par exemple, pour récupérer la première lettre du mot courrant, on peut faire : `mot_courrant[0]`. Je te laisse voir comment récupérer la dernière lettre ainsi que la taille ;).  
 Une fois ces trois informations récupérées. On peut, dans une nouvelle variable, stocker notre chaîne de caractères à afficher à l'utilisateur. Si le mot choisit est "bonjour", on veut afficher "b_____r" à l'utilisateur. Ce qu'on fait en faisant cela, c'est afficher la première lettre, la taille de la chaîne de caractère - 2 et la dernière lettre du mot.   
 (*à savoir qu'en python, on peut multiplier les caractères, en faisant*
 ```py
@@ -88,10 +88,11 @@ Ecrire une boucle Tant que *indice* différent de -1 ; **chercher la prochaine o
 
 Avec ça, tu devrais avoir un jeu du pendu fonctionnel ! 
 
-## 5. Améliorations possibles :
+### 5. Améliorations possibles :
 
 Il reste quelques points d'améliorations que tu peux travailler si tu t'ennuies :
 1. Afficher le pendu (en ASCII Art)
 2. Contrôler l'input utilisateur. Actuellement, le joueur peut écrire n'importe quoi (des chiffres, des lettres, des caractères spéciaux...) et surtout, de n'importe quelle taille.
 3. Gérer la casse (MAJ/min) pour pas que l'utilisateur se retrouve avec des erreurs parce qu'il a écrit en majuscule.
 4. Gérer le cas des mots composés.
+5. ....
