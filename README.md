@@ -6,13 +6,13 @@
 Il faut pouvoir choisir un mot avant de démarrer le jeu, pour se faire, on peut prendre un mot "aléatoire" provennant du dictionnaire ou bien demander à un second utilisateur de choisir le mot.
 
 Dans l'option 1, le mot aléatoire peut être défini par une liste `["mot1", "mot2"]`... sachant qu'une liste, en python peut être vue comme un dictionnaire où chaque clé est en réalité un indice.
-On peut alors voir une liste comme ceci : `{0: "mot1", 1: "mot2"}`, ainsi, si on souhaite accéder au premier élément de la liste, il suffit de faire : `maListe[0]`.   
-On peut alors aisaiment demandé un numéro aléatoire avec les fonctions du module `Random`. Il suffit alors uniquement de connaître la taille de la liste récupérable avec la fonction `len(maListe)`. Pour demander un nombre aléatoire entre 0 et `len(maListe)`.
+On peut alors voir une liste comme ceci : `{0: "mot1", 1: "mot2"}`, ainsi, si on souhaite accéder au premier élément de la liste, il suffit de faire : `ma_liste[0]`.   
+On peut alors aisaiment demandé un numéro aléatoire avec les fonctions du module `Random`. Il suffit alors uniquement de connaître la taille de la liste récupérable avec la fonction `len(ma_liste)`. Pour demander un nombre aléatoire entre 0 et `len(ma_liste)`.
 
 
 ### 2. Savoir si une lettre fait partie du mot : 
 
-Une fois le mot stocké en mémoire (dans une variable `mot_courrant = mots[indiceAléatoire]`) il faut pouvoir faire 2 choses : 
+Une fois le mot stocké en mémoire (dans une variable `mot_courrant = mots[indice_aleatoire]`) il faut pouvoir faire 2 choses : 
 1. Demander à l'utilisateur d'entrer un caractère.
 2. Vérifier que ce caractère soit présent dans le mot.
 
@@ -33,7 +33,7 @@ Dans quels cas le jeu est-il terminé ? On retrouve encore une fois deux cas :
 
 1. Dans l'étape 2. nous étions capable de récupérer de la part du joueur les caractères qu'il propose. On stockait alors ces caractères dans une structure de données. Il faut alors être câpable de déterminer quand un mot est trouvé. Pour se faire, il existe plusieurs méthodes, voici quelques exemples : 
     1. On peut ranger le mot initial (`mot_courrant`) dans l'ordre alphabétique, et retirer les doublons. Ainsi, lorsqu'on veut vérifier que l'ensemble des lettre données par le joueur correspond à la combinaison, on a juste à ranger dans ce même ordre notre liste et les comparer.
-    2. On peut maintenir un ensemble de lettres. Un ensemble est une structure de données qui ressemble aux listes à l'exception que dans un ensemble, on ne peut trouver qu'une seule et unique fois la même occurrence. Si par exemple, on a le mot, `mot_courrant="bonjour"`, on aurait l'ensemble : `{"b", "o", "n", "j", "u", "r"}`, On remarque alors que le "o" n'apparaît qu'une seule fois. Ensuite, il suffira alors, pour chaque proposition du joueur, de vérifier que la lettre apparaît dans le mot. Si oui, on ajoute la lettre dans un autre ensemble, si non, on retire une tentative. Si par exemple, l'utilateur entre dans cet ordre les lettres : "a", "b", "j" on aura un second ensemble qui ressemblera à `{"b", "j"}.
+    2. On peut maintenir un ensemble de lettres. Un ensemble est une structure de données qui ressemble aux listes à l'exception que dans un ensemble, on ne peut trouver qu'une seule et unique fois la même occurrence. Si par exemple, on a le mot, `mot_courrant="bonjour"`, on aurait l'ensemble : `{"b", "o", "n", "j", "u", "r"}`, On remarque alors que le "o" n'apparaît qu'une seule fois. Ensuite, il suffira alors, pour chaque proposition du joueur, de vérifier que la lettre apparaît dans le mot. Si oui, on ajoute la lettre dans un autre ensemble, si non, on retire une tentative. Si par exemple, l'utilateur entre dans cet ordre les lettres : "a", "b", "j" on aura un second ensemble qui ressemblera à `{"b", "j"}`.
 
 
 2. Enfin, nous devons stopper le jeu dans le cas où l'utilisateur s'est trompé trop de fois. Nous avions déjà compté le nombre de fois où le joueur s'est trompé. Avec cette information, nous sommes capâble de demander à la boucle de s'arrêter lorsque nous dépassons un nombre de tentative fixé arbitrairement.
@@ -71,9 +71,9 @@ Ecrire une boucle Tant que *indice* différent de -1 ; **chercher la prochaine o
   `mot_a_afficher = mot_a_afficher[:indice] + lettre + mot_a_afficher[indice + 1:]`.
 
 
-<details><summary>Je suis conscient que cette partie peut paraître un peu compliquer, je te propose donc une solution mais je t'invite à chercher par toi même avant de la regarder !  </summary>
+<details><summary>Je suis conscient que cette partie peut paraître un peu compliquée, je te propose donc une solution mais je t'invite à chercher par toi-même avant de la regarder !  </summary>
   <pre>
-    Tu as vraiment chercher par toi même ? 🤔
+    Tu as vraiment chercher par toi-même ? 🤔
   </pre>
   <details><summary>Très bien, voici ma solution ! </summary>
     <pre>
